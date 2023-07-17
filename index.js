@@ -8,13 +8,14 @@ const router = require('./routers');
 const errorHandler = require('./middlewares/errorHandler');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 const cors = require('./middlewares/cors');
+const { DB_CFG } = require('./utils/config');
 
 const { PORT = 3000 } = process.env;
 
 const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-mongoose.connect('mongodb://127.0.0.1/bitfilmsdb');
+mongoose.connect(DB_CFG, { family: 4 });
 app.use(requestLogger);
 app.use(cors);
 app.use(router);
