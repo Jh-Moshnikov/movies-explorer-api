@@ -10,6 +10,6 @@ const {
 
 cardRoutes.get('/movies', getMovies);
 cardRoutes.post('/movies', validationCreateMovie, createMovie);
-cardRoutes.delete('/movies/_id', validationMoviesId, deleteMovie);
+cardRoutes.delete('/movies/:_id', validationMoviesId, deleteMovie);
 
 module.exports = cardRoutes;
